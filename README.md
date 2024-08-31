@@ -1,6 +1,6 @@
 <strong>Desafio_React</strong>
 
-<a href="https://github.com/JrStevani/Desafio_React/index.html"><strong>Veja o rojeto.</strong></a>
+<a href="jrstevani.github.io/Desafio_React/index.html"><strong>Veja o projeto completo.</strong></a>
 
 O <strong>Desafio_React</strong> é um projeto desenvolvido para demonstrar habilidades em React e integração com APIs externas. O objetivo principal é criar uma aplicação web interativa que permita aos usuários buscar e visualizar informações de perfis do GitHub.
 
