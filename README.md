@@ -17,3 +17,6 @@ Detalhes do Usuário: Exibe uma página de detalhes com informações completas 
 <strong>Objetivo do Projeto:</strong>
 Este projeto visa demonstrar a capacidade de integrar uma API externa com uma interface de usuário moderna, gerenciar estado de aplicação e implementar funcionalidades básicas de um sistema de busca e histórico.
 
+<strong>Imagem original do projeto.</strong>
+
+<img src="./confg/projeto-original.PNG" alt="projeto oroginal"></img>
