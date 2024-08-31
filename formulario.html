@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="./confg/style-formulario.css">
+    <link rel="shortcut icon" href="./confg/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <a id="profile-link" href="" target="_blank">
+                <img id="user-avatar" src="" alt="Avatar do usuário" class="profile-avatar">
+            </a>
+            <div class="profile-details">
+                <a class="name-link" id="name-link" href="" target="_blank">
+                    <h1 id="user-name"></h1>
+                </a>
+                <p id="user-login"></p>
+                <p id="user-location"></p>
+                <p id="user-id"></p>
+                <p id="user-followers"></p>
+                <p id="user-repos"></p>
+            </div>
+        </div>
+        
+        <div class="repos-container">
+            <h2>Repositórios:</h2>
+            <div id="repos-grid" class="repos-grid"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; Feito por <a href="https://github.com/JrStevani/" target="_blank" aria-label="GitHub de Junio Nogueira Stevani">Junio Nogueira Stevani</a> para o <a href="./confg/pdf-desafio.pdf" target="_blank" aria-label="Desafio React Native">Desafio React Native</a>.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            const userId = getQueryParam('html_url');
+            if (userId) {
+                const githubUserData = JSON.parse(localStorage.getItem('githubUserData') || '{}');
+
+                const userData = githubUserData[userId];
+
+                if (userData) {
+                    document.getElementById('user-avatar').src = userData.avatar_url;
+                    document.getElementById('profile-link').href = userData.html_url;
+
+                    document.getElementById('user-name').innerText = `Nome: ${userData.name || 'N/A'}`;
+                    document.getElementById('name-link').href = userData.html_url;
+
+                    document.getElementById('user-login').innerText = `Usuário: ${userData.login}`;
+                    document.getElementById('user-location').innerText = `Localização: ${userData.location || 'Não informado'}`;
+                    document.getElementById('user-id').innerText = `ID: ${userData.id}`;
+                    document.getElementById('user-followers').innerText = `Seguidores: ${userData.followers}`;
+                    document.getElementById('user-repos').innerText = `Repositórios Públicos: ${userData.public_repos}`;
+
+                    fetch(userData.repos_url)
+                        .then(response => response.json())
+                        .then(repos => {
+                            const reposGrid = document.getElementById('repos-grid');
+                            repos.forEach(repo => {
+                                const div = document.createElement('div');
+                                div.className = 'repos-item';
+                                div.innerHTML = `
+                                    <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                                    <p>Linguagem: ${repo.language || 'N/A'}</p>
+                                    <p>Descrição: ${repo.description || 'Sem descrição'}</p>
+                                    <p>Data de Criação: ${new Date(repo.created_at).toLocaleDateString()}</p>
+                                    <p>Último Push: ${new Date(repo.pushed_at).toLocaleDateString()}</p>
+                                `;
+                                reposGrid.appendChild(div);
+                            });
+                        });
+                } else {
+                    console.error('Usuário não encontrado nos dados armazenados.');
+                }
+            } else {
+                console.error('ID do usuário não encontrado na URL.');
+            }
+        });
+    </script>
+</body>
+</html>

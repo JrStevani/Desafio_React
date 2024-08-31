@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio React Native</title>
+    <link rel="shortcut icon" href="./confg/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./confg/style.css">
+</head>
+<body>
+    <main class="main-content">
+        <section class="search-section">
+            <div class="logo-container">
+                <img src="./confg/GitHub-logo.png" alt="Logo Github" class="logo"> <!-- Substitua por ./confg/logo-clicksoft.png -->
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="Usuário..." id="username-input" required aria-label="Nome de usuário">
+            </div>
+            <div class="button-container">
+                <input type="button" value="Pesquisar" id="myButton" aria-label="Pesquisar usuário">
+            </div>
+        </section>
+
+        <section id="informacoes" class="info-section" aria-hidden="true">
+            <a href="./formulario.html" id="url-html" target="_blank" aria-label="Ver detalhes do usuário">
+                <img id="user-avatar" src="" alt="Avatar do usuário" class="avatar">
+            </a>
+            <p id="user-name" class="user-info"></p>
+            <p id="user-login" class="user-info"></p>
+            <p id="user-location" class="user-info"></p>
+        </section>
+
+        <section id="history" class="history-section">
+            <h2>Histórico de Pesquisa</h2>
+            <div id="history-list"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; Feito por <a href="https://github.com/JrStevani/" target="_blank" aria-label="GitHub de Junio Nogueira Stevani">Junio Nogueira Stevani</a> para o <a href="./confg/pdf-desafio.pdf" target="_blank" aria-label="Desafio React Native">Desafio React Native</a>.</p>
+    </footer>
+
+    <script src="./script.js" defer></script>
+</body>
+</html>
